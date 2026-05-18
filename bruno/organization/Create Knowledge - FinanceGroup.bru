@@ -1,0 +1,32 @@
+meta {
+  name: Create Knowledge - FinanceGroup
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{base_url}}/organizations/{{techcorp_org_id}}/knowledge
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+body:json {
+  {
+    "title": "Vacation Policy",
+    "content": "All full-time employees are entitled to 30 days of paid vacation per year. Vacation days must be approved by the direct superior at least 4 weeks in advance.",
+    "isRestricted": false
+  }
+  
+  
+}
+
+docs {
+  # Create Knowledge
+  Cadastra um novo conhecimento na organização.
+  O campo `content` é armazenado no S3; apenas a s3Key é salva no banco.
+  Required role: ORGANIZATION
+}

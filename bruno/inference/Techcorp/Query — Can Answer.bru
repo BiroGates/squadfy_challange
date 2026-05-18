@@ -1,0 +1,29 @@
+meta {
+  name: Query — Can Answer
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/inference/query
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+body:json {
+  {
+    "query": "What is the remote work policy?"
+  }
+}
+
+docs {
+  # Query — Can Answer
+  Pergunta sobre a Remote Work Policy (seed público da TechCorp).
+  Expected responseType: "ANSWER"
+  O LLM é chamado e responde com base no conteúdo do S3.
+  Required role: USER | ORGANIZATION | ADMIN
+}

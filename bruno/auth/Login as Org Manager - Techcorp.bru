@@ -1,0 +1,44 @@
+meta {
+  name: Login as Org Manager - Techcorp
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "organizationId": "{{techcorp_org_id}}",
+    "username": "tc-manager",
+    "password": "OrgMgr123!"
+  }
+  
+  
+  
+  
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setEnvVar("admin_token", res.body.access_token);
+  }
+  
+}
+
+docs {
+  # Login as Org Manager
+  Autentica como gerente da organização TechCorp via API.
+  A API resolve o realm `techcorp` pelo organizationId e faz login no Keycloak internamente.
+  
+  Credenciais (seed-output.json):
+    organizationId: {{techcorp_org_id}}
+    username: tc-manager
+    password: OrgMgr123!
+    role: ORGANIZATION
+  
+  Armazena o JWT em {{org_token}}.
+}

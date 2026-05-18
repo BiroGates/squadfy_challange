@@ -1,0 +1,22 @@
+meta {
+  name: Delete User
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{base_url}}/organizations/{{techcorp_org_id}}/users/REPLACE_WITH_USER_UUID
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+docs {
+  # Delete User
+  Remove um usuário da organização (apenas no banco; usuário no Keycloak permanece).
+  Required role: ADMIN
+  Substitua `REPLACE_WITH_USER_UUID` pelo UUID do usuário obtido no List Users.
+}

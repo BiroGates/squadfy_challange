@@ -1,0 +1,22 @@
+meta {
+  name: Delete Knowledge
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{base_url}}/organizations/{{techcorp_org_id}}/knowledge/2221f4ce-6e94-40b7-935c-be1be84a8895
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+docs {
+  # Delete Knowledge
+  Remove um knowledgement pelo ID (remove do banco; objeto no S3 permanece).
+  Required role: ORGANIZATION
+  Substitua `REPLACE_WITH_KNOWLEDGE_UUID` pelo UUID obtido no List Knowledge.
+}

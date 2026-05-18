@@ -1,0 +1,21 @@
+meta {
+  name: List Knowledge - FinanceGroup
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/organizations/{{financegroup_org_id}}/knowledge
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+docs {
+  # List Knowledge
+  Retorna todos os knowledgements da organização (apenas metadados, sem conteúdo do S3).
+  Required role: ORGANIZATION ou ADMIN
+}

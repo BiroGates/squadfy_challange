@@ -1,0 +1,32 @@
+meta {
+  name: Create User
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/admin/users
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+body:json {
+  {
+    "organizationId": "{{techcorp_org_id}}",
+    "username": "new-user_master",
+    "password": "NewUser123!",
+    "role": "ORGANIZATION"
+  }
+  
+}
+
+docs {
+  # Create User
+  Cria um novo usuário em uma organização (Keycloak + DB).
+  Required role: ADMIN
+  Valores válidos para role: USER | ADMIN | ORGANIZATION
+}

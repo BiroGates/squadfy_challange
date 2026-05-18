@@ -1,0 +1,44 @@
+meta {
+  name: Login as Admin
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "organizationId": "{{admin_org_id}}",
+    "username": "platform-admin",
+    "password": "PlatformAdmin123!"
+  }
+  
+  
+  
+  
+  
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setEnvVar("admin_token", res.body.access_token);
+  }
+}
+
+docs {
+  # Login as Platform Admin
+  Autentica como administrador da plataforma via API.
+  A API busca o realmName pelo organizationId e faz login no Keycloak internamente.
+  
+  Credenciais (seed-output.json):
+    organizationId: {{admin_org_id}}
+    username: platform-admin
+    password: PlatformAdmin123!
+    role: ADMIN
+  
+  Armazena o JWT em {{admin_token}}.
+}

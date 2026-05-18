@@ -1,0 +1,21 @@
+meta {
+  name: List Organizations
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/admin/organizations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+docs {
+  # List Organizations
+  Retorna todas as organizações cadastradas.
+  Required role: ADMIN
+}

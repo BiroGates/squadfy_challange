@@ -1,0 +1,33 @@
+meta {
+  name: Query — Insufficient
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/inference/query
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+body:json {
+  {
+    "query": "What is the best recipe for chocolate cake?"
+  }
+  
+  
+  
+  
+}
+
+docs {
+  # Query — Insufficient Knowledge
+  Pergunta sobre algo completamente fora da base de conhecimento da organização.
+  Expected responseType: "INSUFFICIENT"
+  O LLM decide que nenhum documento recuperado é relevante para responder.
+  Required role: USER | ORGANIZATION | ADMIN
+}

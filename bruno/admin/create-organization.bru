@@ -1,0 +1,30 @@
+meta {
+  name: Create Organization
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/admin/organizations
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+body:json {
+  {
+    "name": "NewOrg Example"
+  }
+  
+  
+}
+
+docs {
+  # Create Organization
+  Cria uma nova organização e seu realm no Keycloak.
+  Required role: ADMIN
+  Efeito: cria realm no Keycloak + linha na tabela organizations.
+}

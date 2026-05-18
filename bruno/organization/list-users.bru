@@ -1,0 +1,21 @@
+meta {
+  name: List Users
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/organizations/{{financegroup_org_id}}/users
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{admin_token}}
+}
+
+docs {
+  # List Users
+  Retorna todos os usuários da organização.
+  Required role: ORGANIZATION ou ADMIN
+}
