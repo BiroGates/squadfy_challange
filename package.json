@@ -85,8 +85,13 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "transformIgnorePatterns": [
-      "/node_modules/(?!(@keycloak/keycloak-admin-client|@langchain)/)"
+      "/node_modules/(?!(@keycloak/keycloak-admin-client|@langchain|url-template|camelize-ts|snakeize-ts)/)"
     ],
+    "moduleNameMapper": {
+      "^src/(.*)$": "<rootDir>/$1",
+      "^infra/(.*)$": "<rootDir>/../infra/$1",
+      "^@keycloak/keycloak-admin-client$": "<rootDir>/../test/stubs/keycloak-admin-client.stub.ts"
+    },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],

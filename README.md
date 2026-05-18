@@ -196,7 +196,6 @@ Em seguida explore as demais rotas normalmente.
 npm run start:dev    # servidor em modo watch (reinicia ao salvar)
 npm run build        # compila TypeScript para /dist
 npm run test         # testes unitários
-npm run test:cov     # testes com cobertura
 npm run db:migrate   # executa migrações Drizzle ORM
 npm run db:seed      # popula banco + Keycloak + MinIO com dados iniciais
 ```
@@ -212,3 +211,21 @@ npm run db:seed      # popula banco + Keycloak + MinIO com dados iniciais
 - **LangGraph** (`@langchain/langgraph`) — orquestração do agente de IA em grafo
 - **Google Gemini** (`gemini-2.5-flash`) — LLM para filtragem e geração de respostas
 - **Bruno** — coleção de requests para testar a API
+
+## Class Diagram
+Abaixo segue diagrama de classe que foi utilizado como base para criar o relacionamento entre as entidades do sistema.
+</br>
+![classDiagram](./class_diagram.drawio.png)
+
+## Ressalvas
+Houveram funcionalidade que foram retiradas/não implementadas devido ao tempo para envio do projeto, abaixo segue algumas melhorias e sugestões que poderiam enriquecer e melhorar a qualidade do software
+
+
+### Redis (cache aside pattern)
+Se considerarmos que existiriam diversos funcionarios de uma organização realizando perguntas parecedias para o LLM, então poderiamos cachear esse valor pra que não fosse necessário realizar chamadas ao banco de dados + s3 toda vez que uma pergunta fosse feita.
+
+### Fallback model
+Como temos uma forte dependencia em um modelo de LLM para realizar o RAG seria interessante implementar um fallback caso o provedor da LLM ficasse indisponivel ou houvesese alguma falha com a comunicação do mesmo.
+
+### Strategias para otimização de tokens
+Como as perguntas são feitas em linguagem natural poderia ser implementado uma biblioteca (ex: caveman) para diminuir a quantidade de tokens de entrada, assim diminuindo o custo para a LLM plugada no código.
