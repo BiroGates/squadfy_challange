@@ -1,0 +1,21 @@
+meta {
+  name: List Users - Techcorp
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/organizations/{{techcorp_org_id}}/users
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # List Users
+  Retorna todos os usuários da organização.
+  Required role: ORGANIZATION ou ADMIN
+}

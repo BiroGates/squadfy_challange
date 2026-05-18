@@ -1,7 +1,7 @@
 meta {
-  name: Create Knowledge - Techcorp
+  name: Create Knowledge - FinanceGroup
   type: http
-  seq: 1
+  seq: 10
 }
 
 post {
@@ -11,13 +11,13 @@ post {
 }
 
 auth:bearer {
-  token: {{admin_token}}
+  token: {{token}}
 }
 
 body:json {
   {
     "title": "Vacation Policy",
-    "content": "All full-time employees are entitled to 20 days of paid vacation per year. Vacation days must be approved by the direct manager at least 2 weeks in advance.",
+    "content": "All full-time employees are entitled to 30 days of paid vacation per year. Vacation days must be approved by the direct superior at least 4 weeks in advance.",
     "isRestricted": false
   }
   

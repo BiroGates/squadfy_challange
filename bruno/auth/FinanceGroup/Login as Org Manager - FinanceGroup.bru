@@ -1,5 +1,5 @@
 meta {
-  name: Login as Org Manager - Techcorp
+  name: Login as Org Manager - FinanceGroup
   type: http
   seq: 2
 }
@@ -12,19 +12,18 @@ post {
 
 body:json {
   {
-    "organizationId": "{{techcorp_org_id}}",
-    "username": "tc-manager",
-    "password": "OrgMgr123!"
+    "organizationId": "{{financegroup_org_id}}",
+    "username": "manager-fg-user1",
+    "password": "ManagerFgUser123!"
+    
   }
-  
-  
   
   
 }
 
 script:post-response {
   if (res.status === 200) {
-    bru.setEnvVar("admin_token", res.body.access_token);
+    bru.setEnvVar("token", res.body.access_token);
   }
   
 }

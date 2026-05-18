@@ -1,0 +1,22 @@
+meta {
+  name: Delete User - FinanceGroup
+  type: http
+  seq: 1
+}
+
+delete {
+  url: {{base_url}}/organizations/{{financegroup_org_id}}/users/REPLACE_WITH_USER_UUID
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # Delete User
+  Remove um usuário da organização (apenas no banco; usuário no Keycloak permanece).
+  Required role: ADMIN
+  Substitua `REPLACE_WITH_USER_UUID` pelo UUID do usuário obtido no List Users.
+}
